@@ -1,0 +1,21 @@
+{
+    "name": "ce/jalali-date-bundle",
+    "description": "Bundle for working with jalali date",
+    "require": {
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    },
+    "license": "mit",
+    "authors": [
+        {
+            "name": "Hossein Zolfi",
+            "email": "hossein.zolfi@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": { "CybersExperts\\Bundle\\JalaliDateBundle": "" }
+    },
+    "target-dir": "CybersExperts/Bundle/JalaliDateBundle"
+}
