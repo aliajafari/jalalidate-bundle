@@ -1,6 +1,7 @@
 {
     "name": "ce/jalali-date-bundle",
     "description": "Bundle for working with jalali date",
+    "keywords": ["Bundle", "Jalali", "Calendar", "Symfony"],
     "require": {
     },
     "require-dev": {
