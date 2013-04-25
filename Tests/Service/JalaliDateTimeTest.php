@@ -16,26 +16,28 @@ class JalaliDateTimeTest extends WebTestCase
 {
     public function testCurrentDate()
     {
-        $currentGregorianDate = array(2011, 1, 1);
-        list($year, $month, $day) = $currentGregorianDate;
+        $currentTimestamp = 1366412400;
+        $result = array(1392, 1, 19);
 
         $dateConverter = $this->getMockBuilder('\CybersExperts\Bundle\JalaliDateBundle\Service\DateConverter')
                 ->disableOriginalConstructor()
                 ->getMock();
         $jalaliDateTime = $this->getMockBuilder('\CybersExperts\Bundle\JalaliDateBundle\Service\JalaliDateTime')
-                ->setMethods(array('getGregorianDate'))
+                ->setMethods(array('getCurrentTime'))
                 ->setConstructorArgs(array($dateConverter))
                 ->getMock();
         $jalaliDateTime
                 ->expects($this->once())
-                ->method('getGregorianDate')
-                ->will($this->returnValue($currentGregorianDate));
+                ->method('getCurrentTime')
+                ->will($this->returnValue($currentTimestamp));
 
         $dateConverter
                 ->expects($this->once())
-                ->method('gregorianToJalali')
-                ->with(2011, 1, 1);
-        $jalaliDateTime->currentDate();
+                ->method('timestampToJalali')
+                ->with($currentTimestamp)
+                ->will($this->returnValue($result));
+
+        $this->assertEquals($jalaliDateTime->currentDate(), $result);
     }
 
     public function testGetGregorian()

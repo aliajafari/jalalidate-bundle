@@ -72,4 +72,12 @@ class DateConverter
 
         return mktime(0, 0, 0, $month, $day, $year);
     }
+
+    public function timestampToJalali($timestamp)
+    {
+        $date = getdate($timestamp);
+        list($year, $month, $day) = array($date['year'], $date['mon'], $date['mday']);
+
+        return $this->gregorianToJalali($year, $month, $day);
+    }
 }

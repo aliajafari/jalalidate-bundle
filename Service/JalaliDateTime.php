@@ -26,8 +26,8 @@ class JalaliDateTime
      */
     public function currentDate()
     {
-        list($year, $month, $day) = $this->getGregorianDate();
-        return $this->dateConverter->gregorianToJalali($year, $month, $day);
+        $timestamp = $this->getCurrentTime();
+        return $this->dateConverter->timestampToJalali($timestamp);
     }
 
     public function getDayOfYear($year, $month, $day)
@@ -77,9 +77,8 @@ class JalaliDateTime
          return (((((($year - $rm) % 2820) + 474) + 38) * 682) % 2816) < 682;
     }
 
-    protected function getGregorianDate()
+    protected function getCurrentTime()
     {
-        $today = getdate();
-        return array($today['year'], $today['mon'], $today['mday']);
+        return time();
     }
 }

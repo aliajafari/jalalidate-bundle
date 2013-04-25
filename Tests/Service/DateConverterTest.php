@@ -89,7 +89,15 @@ class DateConverterTest extends \PHPUnit_Framework_TestCase
     public function jalaliToTimestampDataProvider()
     {
         return array(
-            array(1392, 3,  5,  1369522800),
+            array(1392, 3, 5, 1369510200),
         );
+    }
+
+    /**
+     * @dataProvider jalaliToTimestampDataProvider
+     */
+    public function testTimestampToJalali($year, $month, $day, $timestamp)
+    {
+        $this->assertEquals($this->convrter->timestampToJalali($timestamp), array($year, $month, $day));
     }
 }
